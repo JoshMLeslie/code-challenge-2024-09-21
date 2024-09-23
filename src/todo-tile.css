@@ -1,0 +1,65 @@
+li {
+	list-style: none;
+}
+
+.todo-tile {
+	padding: var(--element-padding);
+	width: 100%;
+	min-height: 80px;
+	max-height: 80px;
+	border-bottom: 2px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+}
+
+.todo-tile.completed {
+	background-color: rgba(0, 255, 0, 0.5);
+}
+
+/* overflow text handling */
+.todo-tile span {
+	overflow: hidden;
+	white-space: break-spaces;
+	@supports (display: -webkit-box) {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	@supports not (display: -webkit-box) {
+		display: flex;
+		overflow: hidden;
+		max-height: 100%;
+	}
+}
+/* end overflow text handling */
+
+.todo-tile.completed span {
+	text-decoration: line-through;
+}
+
+.todo-tile button {
+	border: none;
+	padding: var(--element-half-padding);
+	transition: background-color 0.1s ease;
+	border-radius: 4px;
+}
+
+.todo-tile .delete-button:hover {
+	background-color: var(--danger-color);
+	color: white;
+}
+
+.todo-tile .complete-button:hover {
+	background-color: var(--success-color);
+	color: white;
+}
+
+.todo-tile-actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 8px;
+}
